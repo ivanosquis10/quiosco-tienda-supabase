@@ -20,6 +20,8 @@ export default function Home({ productosCate }) {
     getProductoCategoria(categoriaActual?.id)
   }, [categoriaActual])
 
+  // console.log(productoCategoria)
+
   return (
     <Layout
       pagina={`- ${
@@ -32,7 +34,7 @@ export default function Home({ productosCate }) {
       <p className="text-2xl text-slate-700 my-8 font-medium">
         Elige y personaliza tu pedido a continuación
       </p>
-      <div className="grid grid-cols-4">
+      <div className="grid gap-1 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         {productoCategoria?.map((producto) => (
           <Producto key={producto.id} producto={producto} />
         ))}

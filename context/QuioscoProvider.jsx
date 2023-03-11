@@ -6,6 +6,7 @@ const QuioscoContext = createContext()
 export function QuioscoProvider({ children }) {
   const [categorias, setCategorias] = useState([])
   const [categoriaActual, setCategoriaActual] = useState({})
+  const [producto, setProducto] = useState({})
 
   const obtenerCategorias = async () => {
     try {
@@ -29,12 +30,18 @@ export function QuioscoProvider({ children }) {
     setCategoriaActual(categoria[0])
   }
 
+  const handleSetProducto = (product) => {
+    setProducto(product)
+  }
+
   return (
     <QuioscoContext.Provider
       value={{
         categorias,
         categoriaActual,
         handleCategoriaActual,
+        producto,
+        handleSetProducto,
       }}
     >
       {children}
