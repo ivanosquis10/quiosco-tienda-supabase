@@ -1,7 +1,6 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+// import { supabase } from '../supabase/supabase'
 
-export default (req, res) => {
-  // Open Chrome DevTools to step through the debugger!
-  // debugger;
-  res.status(200).json({ name: 'Hello, world!' });
-};
+// export default (req, res) => {
+// const { data } = await supabase.from('categoria').select('*')
+//  res.status(200).json({})
+// }

@@ -10,7 +10,7 @@ export default function Document() {
         />
         <link rel="shortcut icon" href="/logo.svg" />
       </Head>
-      <body>
+      <body className="bg-slate-100/50">
         <Main />
         <NextScript />
       </body>
