@@ -7,6 +7,7 @@ export function QuioscoProvider({ children }) {
   const [categorias, setCategorias] = useState([])
   const [categoriaActual, setCategoriaActual] = useState({})
   const [producto, setProducto] = useState({})
+  const [modal, setModal] = useState(false)
 
   const obtenerCategorias = async () => {
     try {
@@ -34,6 +35,10 @@ export function QuioscoProvider({ children }) {
     setProducto(product)
   }
 
+  const handleChangeModal = () => {
+    setModal(!modal)
+  }
+
   return (
     <QuioscoContext.Provider
       value={{
@@ -42,6 +47,8 @@ export function QuioscoProvider({ children }) {
         handleCategoriaActual,
         producto,
         handleSetProducto,
+        modal,
+        handleChangeModal,
       }}
     >
       {children}
