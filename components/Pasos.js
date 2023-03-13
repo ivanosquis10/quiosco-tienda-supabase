@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 const pasos = [
   { paso: 1, nombre: 'Menú', url: '/' },
   { paso: 2, nombre: 'Resumen', url: '/resumen' },
-  { paso: 3, nombre: 'Datos y Total', url: '/total' },
+  { paso: 3, nombre: 'Datos y total', url: '/total' },
 ]
 
 export default function Pasos() {
@@ -30,7 +30,7 @@ export default function Pasos() {
             onClick={() => {
               router.push(paso.url)
             }}
-            className="font-bold text-slate-800 text-2xl"
+            className="font-bold text-slate-800 text-xl lg:text-2xl"
             key={paso.paso}
           >
             {paso.nombre}

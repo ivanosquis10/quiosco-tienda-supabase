@@ -41,7 +41,7 @@ export function QuioscoProvider({ children }) {
     setModal(!modal)
   }
 
-  const handleAgregarPedido = ({ categoriaId, imagen, ...producto }) => {
+  const handleAgregarPedido = ({ categoriaId, ...producto }) => {
     // valida si el producto esta o no en el state
     if (pedido.some((productoState) => productoState.id === producto.id)) {
       // en caso de yes, Actualizar la cantidad
