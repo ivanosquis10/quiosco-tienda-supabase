@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { ToastContainer } from 'react-toastify'
 import Sidebar from '../components/Sidebar'
 import ModalProducto from '../components/ModalProducto'
+import Pasos from '../components/Pasos'
 import useQuiosco from '../hooks/useQuiosco'
 
 import 'react-toastify/dist/ReactToastify.min.css'
@@ -20,7 +21,10 @@ export default function Layout({ children, pagina }) {
           <Sidebar />
         </aside>
         <main className="md:w-8/12 xl:w-3/4 2xl:w-4/5 h-screen">
-          <div className="p-10">{children}</div>
+          <div className="p-10">
+            <Pasos />
+            {children}
+          </div>
         </main>
       </div>
       {modal && <ModalProducto />}

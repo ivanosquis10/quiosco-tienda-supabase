@@ -1,0 +1,14 @@
+import Layout from '../layout/Layout'
+
+export default function Total() {
+  return (
+    <Layout pagina={'- Total'}>
+      <h2 className="text-4xl uppercase font-bold text-slate-800 mt-10">
+        Total y confirmar pedido
+      </h2>
+      <p className="text-2xl my-5 text-slate-700 font-bold">
+        Confirma tu pedido a continuación
+      </p>
+    </Layout>
+  )
+}
