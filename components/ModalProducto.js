@@ -1,13 +1,27 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { formatMoney } from '../helpers'
 import useQuiosco from '../hooks/useQuiosco'
 
 export default function ModalProducto() {
-  const { producto, handleChangeModal, handleAgregarPedido } = useQuiosco()
+  const { producto, handleChangeModal, handleAgregarPedido, pedido } =
+    useQuiosco()
   const { nombre, imagen, precio } = producto
 
   const [cantidad, setCantidad] = useState(1)
+  const [edicion, setEdicion] = useState(false)
+
+  useEffect(() => {
+    // comprobar si el producto esta en el state para detectarlo en el modal
+    if (pedido.some((pedidoState) => pedidoState.id === producto.id)) {
+      // comparamos para verificar que cantidad coloco el usuario y que al abrir el modal y se muestre la cantidad que el usuario coloco
+      const productoEdicion = pedido.find(
+        (pedidoState) => pedidoState.id === producto.id
+      )
+      setEdicion(true)
+      setCantidad(productoEdicion.cantidad)
+    }
+  }, [producto, pedido])
 
   return (
     <div
@@ -16,7 +30,7 @@ export default function ModalProducto() {
       role="dialog"
       aria-modal="true"
     >
-      <div class="fixed inset-0 bg-slate-900/90 transition-opacity "></div>
+      <div class="fixed inset-0 bg-slate-900/90 transition-opacity"></div>
 
       <div class="fixed inset-0 z-10 overflow-hidden backdrop-blur">
         <div class="flex items-center justify-center h-screen px-3">
@@ -105,7 +119,7 @@ export default function ModalProducto() {
                         handleAgregarPedido({ ...producto, cantidad })
                       }
                     >
-                      Añadir al pedido
+                      {edicion ? 'Guardar cambios' : 'Añadir al pedido'}
                     </button>
                     <button
                       type="button"

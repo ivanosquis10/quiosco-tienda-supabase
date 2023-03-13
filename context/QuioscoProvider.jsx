@@ -1,5 +1,6 @@
 import { useEffect, useState, createContext } from 'react'
 import { supabase } from '../supabase/supabase'
+import { toast } from 'react-toastify'
 
 const QuioscoContext = createContext()
 
@@ -48,10 +49,27 @@ export function QuioscoProvider({ children }) {
         productoState.id === producto.id ? producto : productoState
       )
       setPedido(pedidoActualizado)
+
+      toast.success('Pedido actualizado!', {
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+      })
     } else {
       // en caso de no, se agrega al state
       setPedido([...pedido, producto])
+      toast.success('Agregado el pedido!', {
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+      })
     }
+
+    setModal(false)
   }
 
   return (
@@ -65,6 +83,7 @@ export function QuioscoProvider({ children }) {
         modal,
         handleChangeModal,
         handleAgregarPedido,
+        pedido,
       }}
     >
       {children}
