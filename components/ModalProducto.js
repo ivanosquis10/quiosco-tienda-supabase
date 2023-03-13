@@ -15,11 +15,11 @@ export default function ModalProducto() {
     >
       <div class="fixed inset-0 bg-slate-900/90 transition-opacity "></div>
 
-      <div class="fixed inset-0 z-10 overflow-y-auto">
-        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-          <div class="relative transform overflow-hidden rounded-lg bg-white shadow-xl transition-all  w-full lg:w-6/12">
+      <div class="fixed inset-0 z-10 overflow-hidden">
+        <div class="flex items-center justify-center h-screen px-3">
+          <div class="relative transform overflow-hidden rounded-lg bg-white shadow-xl transition-all  w-full md:w-6/12 mx-auto">
             <div class="bg-white p-6">
-              <div class="flex justify-center gap-4 ">
+              <div class="flex flex-col lg:flex-row justify-center gap-4 ">
                 {/*imagen */}
                 <div class="flex flex-shrink-0 items-center justify-center">
                   <Image
@@ -50,7 +50,7 @@ export default function ModalProducto() {
                   <div className="">
                     <button
                       type="button"
-                      class="w-full justify-center rounded-md bg-red-600 px-4 py-2 text-xl font-bold text-white shadow-sm hover:bg-red-500"
+                      class="w-full justify-center rounded-md bg-red-600 px-4 py-2 text-xl font-bold text-white shadow-sm hover:bg-red-500 mt-5"
                       onClick={() => handleChangeModal()}
                     >
                       Cerrar
