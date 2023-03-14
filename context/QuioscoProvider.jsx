@@ -1,6 +1,7 @@
 import { useEffect, useState, createContext } from 'react'
 import { supabase } from '../supabase/supabase'
 import { toast } from 'react-toastify'
+import { useRouter } from 'next/router'
 
 const QuioscoContext = createContext()
 
@@ -10,6 +11,8 @@ export function QuioscoProvider({ children }) {
   const [producto, setProducto] = useState({})
   const [modal, setModal] = useState(false)
   const [pedido, setPedido] = useState([])
+
+  const router = useRouter()
 
   const obtenerCategorias = async () => {
     try {
@@ -31,6 +34,7 @@ export function QuioscoProvider({ children }) {
   const handleCategoriaActual = (id) => {
     const categoria = categorias.filter((cate) => cate.id === id)
     setCategoriaActual(categoria[0])
+    router.push('/')
   }
 
   const handleSetProducto = (product) => {
@@ -72,6 +76,25 @@ export function QuioscoProvider({ children }) {
     setModal(false)
   }
 
+  const handleEditarCantidades = (id) => {
+    const productoActualizar = pedido.filter((producto) => producto.id === id)
+    setProducto(productoActualizar[0])
+    setModal(!modal)
+  }
+
+  const handleEliminar = (id) => {
+    const productoActualizado = pedido.filter((producto) => producto.id !== id)
+    setPedido(productoActualizado)
+
+    toast.error('Eliminado correctamente!', {
+      position: 'top-right',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      draggable: true,
+    })
+  }
+
   return (
     <QuioscoContext.Provider
       value={{
@@ -84,6 +107,8 @@ export function QuioscoProvider({ children }) {
         handleChangeModal,
         handleAgregarPedido,
         pedido,
+        handleEditarCantidades,
+        handleEliminar,
       }}
     >
       {children}

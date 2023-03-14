@@ -3,6 +3,7 @@ import { formatMoney } from '../helpers'
 import useQuiosco from '../hooks/useQuiosco'
 
 export default function ResumenCard({ producto }) {
+  const { handleEditarCantidades, handleEliminar } = useQuiosco()
   return (
     <div className="rounded-md bg-slate-200 shadow p-5 mb-3 flex flex-col md:flex-row gap-10 items-center">
       <div className="md:w-1/6">
@@ -33,6 +34,7 @@ export default function ResumenCard({ producto }) {
         <button
           type="button"
           className="bg-slate-700 flex items-center justify-center gap-2 px-5 py-2 text-white rounded-md font-bold uppercase shadow-md w-full text-center hover:bg-slate-500"
+          onClick={() => handleEditarCantidades(producto.id)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -48,6 +50,7 @@ export default function ResumenCard({ producto }) {
         <button
           type="button"
           className="bg-red-600 flex items-center justify-center px-5 py-2 text-white rounded-md font-bold uppercase shadow-md w-full text-center mt-3 hover:bg-red-500"
+          onClick={() => handleEliminar(producto.id)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
