@@ -11,6 +11,8 @@ export function QuioscoProvider({ children }) {
   const [producto, setProducto] = useState({})
   const [modal, setModal] = useState(false)
   const [pedido, setPedido] = useState([])
+  const [nombre, setNombre] = useState('')
+  const [total, setTotal] = useState(0)
 
   const router = useRouter()
 
@@ -30,6 +32,15 @@ export function QuioscoProvider({ children }) {
   useEffect(() => {
     setCategoriaActual(categorias[0])
   }, [categorias])
+
+  useEffect(() => {
+    const nuevoTotal = pedido.reduce(
+      (total, producto) => producto.precio * producto.cantidad + total,
+      0
+    )
+
+    setTotal(nuevoTotal)
+  }, [pedido])
 
   const handleCategoriaActual = (id) => {
     const categoria = categorias.filter((cate) => cate.id === id)
@@ -95,6 +106,17 @@ export function QuioscoProvider({ children }) {
     })
   }
 
+  async function handleOrden(e) {
+    e.preventDefault()
+    console.log('agregando orden')
+
+    // const {data, error} = supabase.from('orden').insert({ })
+
+    //console.log(pedido)
+    //console.log(nombre)
+    //console.log(total)
+  }
+
   return (
     <QuioscoContext.Provider
       value={{
@@ -109,6 +131,10 @@ export function QuioscoProvider({ children }) {
         pedido,
         handleEditarCantidades,
         handleEliminar,
+        nombre,
+        setNombre,
+        handleOrden,
+        total,
       }}
     >
       {children}

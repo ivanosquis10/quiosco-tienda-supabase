@@ -25,20 +25,20 @@ export default function ModalProducto() {
 
   return (
     <div
-      class="relative z-10"
+      className="relative z-10"
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
     >
-      <div class="fixed inset-0 bg-slate-900/90 transition-opacity"></div>
+      <div className="fixed inset-0 bg-slate-900/90 transition-opacity"></div>
 
-      <div class="fixed inset-0 z-10 overflow-hidden backdrop-blur">
-        <div class="flex items-center justify-center h-screen px-3">
-          <div class="relative transform overflow-hidden rounded-lg shadow-xl shadow-slate-600 transition-all w-full md:w-6/12 mx-auto">
-            <div class="bg-slate-900 p-6 text-slate-100">
-              <div class="flex flex-col lg:flex-row justify-center gap-4 ">
+      <div className="fixed inset-0 z-10 overflow-hidden backdrop-blur">
+        <div className="flex items-center justify-center h-screen px-3">
+          <div className="relative transform overflow-hidden rounded-lg shadow-xl shadow-slate-600 transition-all w-full md:w-6/12 mx-auto">
+            <div className="bg-slate-900 p-6 text-slate-100">
+              <div className="flex flex-col lg:flex-row justify-center gap-4 ">
                 {/*imagen */}
-                <div class="flex flex-shrink-0 items-center justify-center">
+                <div className="flex flex-shrink-0 items-center justify-center">
                   <Image
                     className="rounded-md"
                     src={`/${imagen}.jpg`}
@@ -49,9 +49,9 @@ export default function ModalProducto() {
                 </div>
 
                 {/*boody */}
-                <div class="text-start flex flex-col justify-between">
-                  <div class="mt-2">
-                    <h3 class="text-4xl font-bold" id="modal-title">
+                <div className="text-start flex flex-col justify-between">
+                  <div className="mt-2">
+                    <h3 className="text-4xl font-bold" id="modal-title">
                       {nombre}
                     </h3>
                     <p className="text-2xl font-bold mt-2 text-slate-300">
@@ -114,7 +114,7 @@ export default function ModalProducto() {
                   <div className="flex gap-2 items-center justify-center">
                     <button
                       type="button"
-                      class="w-11/12 justify-center rounded-md bg-slate-800 p-2 text-xl font-bold text-white shadow-sm hover:bg-slate-700 mt-5 uppercase"
+                      className="w-11/12 justify-center rounded-md bg-slate-800 p-2 text-xl font-bold text-white shadow-sm hover:bg-slate-700 mt-5 uppercase"
                       onClick={() =>
                         handleAgregarPedido({ ...producto, cantidad })
                       }
@@ -123,7 +123,7 @@ export default function ModalProducto() {
                     </button>
                     <button
                       type="button"
-                      class="rounded-md bg-red-600 p-2 text-xl font-bold text-white shadow-sm hover:bg-red-500 mt-5"
+                      className="rounded-md bg-red-600 p-2 text-xl font-bold text-white shadow-sm hover:bg-red-500 mt-5"
                       onClick={() => handleChangeModal()}
                     >
                       <svg

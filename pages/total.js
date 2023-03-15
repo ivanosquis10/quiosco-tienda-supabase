@@ -1,10 +1,18 @@
+import { useEffect, useCallback } from 'react'
+import { formatMoney } from '../helpers'
+import useQuiosco from '../hooks/useQuiosco'
 import Layout from '../layout/Layout'
 
 export default function Total() {
-  // const handleOrden = (e) => {
-  //  e.preventDefault()
-  //  alert('agregando orden')
-  //}
+  const { pedido, nombre, setNombre, handleOrden, total } = useQuiosco()
+
+  const comprobarPedido = useCallback(() => {
+    return pedido.length === 0 || nombre === '' || nombre.length < 3
+  }, [pedido, nombre])
+
+  useEffect(() => {
+    comprobarPedido()
+  }, [pedido, comprobarPedido])
 
   return (
     <Layout pagina={'- Total'}>
@@ -15,7 +23,7 @@ export default function Total() {
         Confirma tu pedido a continuación
       </p>
 
-      <form>
+      <form onSubmit={handleOrden}>
         <div>
           <label
             className="block text-xl font-bold text-slate-800 uppercase"
@@ -27,22 +35,31 @@ export default function Total() {
             id="nombre"
             className="w-full lg:w-1/3 bg-gray-200 text-xl rounded-md mt-3 py-2 text-slate-800 px-2 outline-none"
             type="text"
-            autocomplete="off"
+            autoComplete="off"
             placeholder="Ingresa tu nombre..."
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
           />
         </div>
 
         <div className="mt-10">
           <p className="text-2xl text-slate-700 font-medium">
             Total a pagar:{' '}
-            <span className="font-bold text-slate-800">$200</span>
+            <span className="font-bold text-slate-800">
+              {formatMoney(total)}
+            </span>
           </p>
         </div>
 
         <input
           type="submit"
-          className="bg-amber-600 hover:bg-amber-500 w-full lg:w-auto px-5 py-2 rounded-md uppercase text-slate-100 font-bold text-center mt-5 cursor-pointer ease-in-out duration-300 outline-none"
+          className={` ${
+            comprobarPedido()
+              ? 'bg-amber-200'
+              : 'bg-amber-600 hover:bg-amber-500 cursor-pointer'
+          } w-full lg:w-auto px-5 py-2 rounded-md uppercase text-slate-100 font-bold text-center mt-5 ease-in-out duration-300 outline-none`}
           value="confirmar pedido"
+          disabled={comprobarPedido()}
         />
       </form>
     </Layout>
