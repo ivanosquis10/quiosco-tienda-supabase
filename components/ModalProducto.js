@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { formatMoney } from '../helpers'
 import useQuiosco from '../hooks/useQuiosco'
+import { formatMoney } from '../helpers'
 
 export default function ModalProducto() {
+  const [cantidad, setCantidad] = useState(1)
+  const [edicion, setEdicion] = useState(false)
+
   const { producto, handleChangeModal, handleAgregarPedido, pedido } =
     useQuiosco()
   const { nombre, imagen, precio } = producto
-
-  const [cantidad, setCantidad] = useState(1)
-  const [edicion, setEdicion] = useState(false)
 
   useEffect(() => {
     // comprobar si el producto esta en el state para detectarlo en el modal
@@ -36,7 +36,7 @@ export default function ModalProducto() {
         <div className="flex items-center justify-center h-screen px-3">
           <div className="relative transform overflow-hidden rounded-lg shadow-xl shadow-slate-600 transition-all w-full md:w-6/12 mx-auto">
             <div className="bg-slate-900 p-6 text-slate-100">
-              <div className="flex flex-col lg:flex-row justify-center gap-4 ">
+              <div className="flex flex-col xl:flex-row justify-center gap-4 ">
                 {/*imagen */}
                 <div className="flex flex-shrink-0 items-center justify-center">
                   <Image
@@ -57,7 +57,7 @@ export default function ModalProducto() {
                     <p className="text-2xl font-bold mt-2 text-slate-300">
                       Precio:{' '}
                       <span className="font-bold text-2xl text-slate-100">
-                        {precio}
+                        {formatMoney(precio)}
                       </span>
                     </p>
 
@@ -111,16 +111,18 @@ export default function ModalProducto() {
                       </button>
                     </div>
                   </div>
+                  {/* botones editar y eliminar */}
                   <div className="flex gap-2 items-center justify-center">
                     <button
                       type="button"
-                      className="w-11/12 justify-center rounded-md bg-slate-800 p-2 text-xl font-bold text-white shadow-sm hover:bg-slate-700 mt-5 uppercase"
+                      className="w-10/12 justify-center rounded-md bg-slate-800 p-2 text-xl font-bold text-white shadow-sm hover:bg-slate-700 mt-5 uppercase"
                       onClick={() =>
                         handleAgregarPedido({ ...producto, cantidad })
                       }
                     >
                       {edicion ? 'Guardar cambios' : 'Añadir al pedido'}
                     </button>
+
                     <button
                       type="button"
                       className="rounded-md bg-red-600 p-2 text-xl font-bold text-white shadow-sm hover:bg-red-500 mt-5"

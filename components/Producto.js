@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import { formatMoney } from '../helpers'
 import useQuiosco from '../hooks/useQuiosco'
+import { formatMoney } from '../helpers'
 
 export default function Producto({ producto }) {
   const { handleSetProducto, handleChangeModal } = useQuiosco()
