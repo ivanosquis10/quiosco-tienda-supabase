@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { formatMoney } from '../helpers'
 
 export default function Orden({ orden }) {
   const { id, nombre, pedido, total } = orden
@@ -41,6 +42,11 @@ export default function Orden({ orden }) {
             </div>
           </div>
         ))}
+        <div className="md:flex md:items-center md:justify-between mt-5">
+          <p className="font-bold text-4xl text-white ">
+            Total a pagar: {formatMoney(total)}
+          </p>
+        </div>
       </div>
     </div>
   )
