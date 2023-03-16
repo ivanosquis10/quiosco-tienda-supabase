@@ -3,11 +3,11 @@ import Image from 'next/image'
 export default function Orden({ orden }) {
   const { id, nombre, pedido, total } = orden
   return (
-    <div className="border-2 p-2 rounded-md bg-slate-800 mb-4 shadow-md shoadow-slate-900">
-      <h3 className="text-2xl text-gray-200 text-medium">
+    <div className="p-5 rounded-md bg-slate-700 mb-4">
+      <h3 className="text-2xl text-gray-300 text-medium">
         Orden: <span className="text-white font-bold ">{id}</span>
       </h3>
-      <p className="text-lg my-3 text-gray-200 font-medium">
+      <p className="text-lg my-3 text-gray-300 font-medium">
         Cliente: <span className="text-white font-bold ">{nombre}</span>
       </p>
 
@@ -19,6 +19,7 @@ export default function Orden({ orden }) {
           >
             <div className="w-32">
               <Image
+                className="rounded-md"
                 width={150}
                 height={100}
                 src={`/${platillo.imagen}.jpg`}
@@ -31,7 +32,7 @@ export default function Orden({ orden }) {
               <h4 className="text-xl font-bold text-white">
                 {platillo.nombre}
               </h4>
-              <p className="text-lg font-medium text-gray-300">
+              <p className="text-lg font-medium text-gray-400">
                 Cantidad:{' '}
                 <span className="text-white font-bold">
                   {platillo.cantidad}

@@ -22,10 +22,10 @@ export default function Admin() {
   return (
     <AdminLayout pagina={'Admin'}>
       <div>
-        <h1 className="text-4xl uppercase font-bold text-slate-800">
+        <h1 className="text-4xl uppercase font-bold text-gray-200">
           Panel de Administración
         </h1>
-        <p className="text-2xl my-5 text-gray-700 font-bold">
+        <p className="text-2xl my-5 text-gray-500 font-bold">
           Administra las órdenes
         </p>
       </div>

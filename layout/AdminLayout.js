@@ -11,8 +11,8 @@ export default function AdminLayout({ children, pagina }) {
         <meta name="description" content="Quiosco Cafetería" />
       </Head>
 
-      <div className="md:flex bg-gray-100">
-        <aside className="md:w-4/12 xl:w-1/4 2xl:w-1/5 p-5 bg-white">
+      <div className="md:flex bg-slate-800">
+        <aside className="md:w-4/12 xl:w-1/4 2xl:w-1/5 p-5 bg-slate-600">
           <Image
             className=""
             width={300}
