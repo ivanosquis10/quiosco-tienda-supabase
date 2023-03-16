@@ -1,6 +1,7 @@
 import useSWR from 'swr'
-import Orden from '../components/Orden'
 import AdminLayout from '../layout/AdminLayout'
+import Orden from '../components/Orden'
+import Spinner from '../components/Spinner'
 
 export default function Admin() {
   const fetcher = async () => {
@@ -21,17 +22,21 @@ export default function Admin() {
   return (
     <AdminLayout pagina={'Admin'}>
       <div>
-        <h1 className="text-4xl uppercase font-bold text-slate-100">
+        <h1 className="text-4xl uppercase font-bold text-slate-800">
           Panel de Administración
         </h1>
-        <p className="text-2xl my-5 text-slate-300 font-bold">
+        <p className="text-2xl my-5 text-gray-700 font-bold">
           Administra las órdenes
         </p>
       </div>
 
-      {dataOrdenes && dataOrdenes.length
-        ? dataOrdenes.map((orden) => <Orden key={orden.id} orden={orden} />)
-        : 'Todavía no hay órdenes!'}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        dataOrdenes.map((orden) => <Orden key={orden.id} orden={orden} />)
+      )}
+
+      {dataOrdenes && dataOrdenes.length === 0 && 'No hay órdenes pendientes!'}
     </AdminLayout>
   )
 }
