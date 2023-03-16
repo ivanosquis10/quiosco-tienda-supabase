@@ -14,12 +14,18 @@ export default function AdminLayout({ children, pagina }) {
       <div className="md:flex bg-slate-800">
         <aside className="md:w-4/12 xl:w-1/4 2xl:w-1/5 p-5 bg-slate-600">
           <Image
-            className=""
+            className="mb-10"
             width={300}
             height={100}
             src="/logo.svg"
             alt="imagen logotipo"
           />
+          <p className="text-slate-800 font-bold">
+            Made by Ivanosquis13 on twitter
+          </p>
+          <p className="text-slate-800 font-bold">
+            Made by Ivanosquis10 on github
+          </p>
         </aside>
 
         <main className="md:w-8/12 xl:w-3/4 2xl:w-4/5 h-screen overflow-y-scroll">

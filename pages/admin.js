@@ -13,21 +13,16 @@ export default function Admin() {
       console.error(e)
     }
   }
-  const {
-    data: dataOrdenes,
-    error,
-    isLoading,
-  } = useSWR('/api/ordenes', fetcher)
+  const { data: dataOrdenes, isLoading } = useSWR('/api/ordenes', fetcher, {
+    refreshInterval: 1000,
+  })
 
   return (
     <AdminLayout pagina={'Admin'}>
       <div>
-        <h1 className="text-4xl uppercase font-bold text-gray-200">
+        <h1 className="text-4xl uppercase font-bold text-gray-200 mb-10">
           Panel de Administración
         </h1>
-        <p className="text-2xl my-5 text-gray-500 font-bold">
-          Administra las órdenes
-        </p>
       </div>
 
       {isLoading ? (
@@ -36,7 +31,11 @@ export default function Admin() {
         dataOrdenes.map((orden) => <Orden key={orden.id} orden={orden} />)
       )}
 
-      {dataOrdenes && dataOrdenes.length === 0 && 'No hay órdenes pendientes!'}
+      {dataOrdenes && dataOrdenes.length === 0 && (
+        <p className="text-xl uppercase font-bold text-white">
+          No hay órdenes pendientes!
+        </p>
+      )}
     </AdminLayout>
   )
 }

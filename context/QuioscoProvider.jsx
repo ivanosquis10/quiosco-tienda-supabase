@@ -1,5 +1,6 @@
 import { useEffect, useState, createContext } from 'react'
 import { useRouter } from 'next/router'
+import axios from 'axios'
 import { supabase } from '../supabase/supabase'
 import { toast } from 'react-toastify'
 
@@ -18,8 +19,8 @@ export function QuioscoProvider({ children }) {
 
   const obtenerCategorias = async () => {
     try {
-      const { data } = await supabase.from('categoria').select('*')
-      setCategorias(data)
+      const { data: DataCategorias } = await axios('/api/categorias')
+      setCategorias(DataCategorias.data)
     } catch (e) {
       console.error(e)
     }

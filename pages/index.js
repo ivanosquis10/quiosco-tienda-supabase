@@ -4,10 +4,9 @@ import useQuiosco from '../hooks/useQuiosco'
 import { supabase } from '../supabase/supabase'
 import Producto from '../components/Producto'
 
-export default function Home({ data }) {
-  const { categoriaActual } = useQuiosco()
-
+export default function Home() {
   const [productoCategoria, setProductoCategoria] = useState([])
+  const { categoriaActual } = useQuiosco()
 
   useEffect(() => {
     async function getProductoCategoria(id) {
