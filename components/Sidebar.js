@@ -13,7 +13,6 @@ export default function Sidebar() {
           width={150}
           height={100}
           alt="logotipo kiosko"
-          priority={true}
         />
       </div>
       <nav className="mt-5 mb-2">
