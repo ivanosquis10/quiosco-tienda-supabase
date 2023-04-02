@@ -10,7 +10,7 @@ export default function Producto({ producto }) {
     <div className="flex flex-col justify-between p-3 rounded-md bg-slate-300/60 h-full shadow-md">
       <div className="flex justify-center">
         <Image
-          className="rounded-md aspect-auto"
+          className="rounded-md"
           src={`/${imagen}.jpg`}
           width={250}
           height={400}
