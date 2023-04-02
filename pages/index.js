@@ -11,11 +11,18 @@ export default function Home() {
 
   useEffect(() => {
     async function getProductoCategoria(id) {
-      const { data } = await supabase
-        .from('producto')
-        .select()
-        .eq('categoriaId', id)
-      setProductoCategoria(data)
+      let productos = JSON.parse(
+        localStorage.getItem(`productosCategoria-${id}`)
+      )
+      if (!productos) {
+        const { data } = await supabase
+          .from('producto')
+          .select()
+          .eq('categoriaId', id)
+        localStorage.setItem(`productosCategoria-${id}`, JSON.stringify(data))
+        productos = data
+      }
+      setProductoCategoria(productos)
     }
 
     if (categoriaActual?.id) {
