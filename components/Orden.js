@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import axios from 'axios'
 import { toast, ToastContainer } from 'react-toastify'
-import { supabase } from '../supabase/supabase'
 import { formatMoney } from '../helpers'
 
 export default function Orden({ orden }) {
@@ -9,10 +8,6 @@ export default function Orden({ orden }) {
 
   const completarOrden = async () => {
     try {
-      //const { data, error } = await supabase
-      //  .from('orden')
-      //  .update({ estado: true })
-      //  .eq('id', id)
       const { data } = await axios.post(`/api/ordenes/${id}`)
 
       toast.success('Orden Lista!')
@@ -45,7 +40,6 @@ export default function Orden({ orden }) {
                 height={100}
                 src={`/${platillo.imagen}.jpg`}
                 alt={`Imagen del platillo ${platillo.nombre} `}
-                priority
               />
             </div>
 

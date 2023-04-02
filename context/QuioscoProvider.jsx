@@ -14,15 +14,19 @@ export function QuioscoProvider({ children }) {
   const [pedido, setPedido] = useState([])
   const [nombre, setNombre] = useState('')
   const [total, setTotal] = useState(0)
+  const [loading, setLoading] = useState(false)
 
   const router = useRouter()
 
   const obtenerCategorias = async () => {
+    setLoading(true)
     try {
       const { data: DataCategorias } = await axios('/api/categorias')
       setCategorias(DataCategorias.data)
     } catch (e) {
       console.error(e)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -166,6 +170,7 @@ export function QuioscoProvider({ children }) {
         setNombre,
         handleOrden,
         total,
+        loading
       }}
     >
       {children}

@@ -15,7 +15,6 @@ export default function Categoria({ categoria }) {
         height={70}
         src={`/icono_${icono}.svg`}
         alt={`Imagen icono de ${nombre}`}
-        priority
       />
       <button
         type="button"

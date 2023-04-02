@@ -25,7 +25,7 @@ export default function Pasos() {
   return (
     <>
       <div className="flex items-center justify-between mb-5">
-        {pasos.map((paso) => (
+        {pasos?.map((paso) => (
           <button
             onClick={() => {
               router.push(paso.url)
